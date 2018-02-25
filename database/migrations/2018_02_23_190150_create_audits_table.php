@@ -15,10 +15,8 @@ class CreateAuditsTable extends Migration
     {
         Schema::create('audits', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('cpar_id');
+            $table->unsignedInteger('status');
             $table->string('type');
-            $table->string('url');
-            $table->string('responsible_persons_ids');
             $table->timestamps();
             $table->softDeletes();
         });
