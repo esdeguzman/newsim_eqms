@@ -13,4 +13,8 @@ class Audit extends Model
     public function cpars() {
         return $this->hasMany(CPAR::class);
     }
+
+    public function responsibles() {
+        return $this->hasMany(ResponsiblePerson::class);
+    }
 }
