@@ -2,6 +2,7 @@
 
 // NAControllers
 use App\Mail\CparCreated;
+use Google\Cloud\Vision\VisionClient;
 
 Route::get('callback', 'NAController@callback');
 Route::get('login', 'NAController@login');
@@ -14,6 +15,7 @@ Route::resource('revision-logs', 'RevisionLogController');
 Route::resource('documents', 'DocumentController');
 Route::resource('sections', 'SectionController');
 Route::resource('settings', 'SettingController');
+Route::resource('audits', 'AuditController');
 Route::resource('cpars', 'CparController');
 Route::resource('logs', 'LogController');
 
@@ -55,3 +57,25 @@ Route::post('answer/{cpar}', 'CparController@answer')->name('answer');
 Route::post('access-requests/{access_request}/grant', 'AccessRequestController@grant')->name('access-requests.grant');
 Route::post('access-requests/{access_request}/revoke', 'AccessRequestController@revoke')->name('access-requests.revoke');
 Route::post('revision-requests/appeal/{revision_request}', 'RevisionRequestController@storeAppeal')->name('revision-requests.store-appeal');
+
+
+Route::get('vision', function() {
+
+     $projectId = 'eqms-196309';
+     $path = url('img/28418215_1832421390136008_362431972_o.jpg');git
+
+    function detect_text($projectId, $path)
+    {
+        $vision = new VisionClient([
+            'projectId' => $projectId,
+        ]);
+        $image = $vision->image(file_get_contents($path), ['TEXT_DETECTION']);
+        $result = $vision->annotate($image);
+        print("Texts:\n");
+        foreach ((array) $result->text() as $text) {
+            print($text->description() . PHP_EOL);
+        }
+    }
+
+    detect_text($projectId, $path);
+});
