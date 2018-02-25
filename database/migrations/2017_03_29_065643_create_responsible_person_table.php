@@ -15,7 +15,8 @@ class CreateResponsiblePersonTable extends Migration
     {
         Schema::create('responsible_persons', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('cpar_id');
+            $table->integer('audit_id')->nullable();
+            $table->integer('cpar_id')->nullable();
             $table->integer('user_id');
             $table->string('code')->nullable()->unique();
             $table->softDeletes();
