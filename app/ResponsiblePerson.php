@@ -15,4 +15,8 @@ class ResponsiblePerson extends Model {
     public function cpar() {
         return $this->belongsTo(Cpar::class);
     }
+
+    public function audits() {
+        return $this->belongsToMany(Audit::class);
+    }
 }
