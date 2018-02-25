@@ -15,6 +15,10 @@ class Cpar extends Model {
         return $this->hasMany(Attachment::class);
     }
 
+    public function audit() {
+        return $this->belongsTo(Audit::class);
+    }
+
     public function cparClosed() {
         return $this->hasOne(CparClosed::class);
     }
