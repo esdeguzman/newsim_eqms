@@ -36,6 +36,7 @@
                 <li><a href="{{ route('documents.create') }}"><span class="fa fa-file-o"></span> New Document</a></li>
                 <li><a href="{{ route('cpars.create') }}"><span class="fa fa-pencil-square-o"></span> Raise a CPAR</a></li>
                 <li><a href="{{ route('revision-requests.store') }}"><span class="fa fa-file"></span> Request a Revision</a></li>
+                <li><a href="{{ route('audits.create') }}"><span class="fa fa-exclamation-circle"></span> New Audit Summary</a></li>
             </ul>
         </li>
         <li class="xn-openable @yield('nav-settings')">
